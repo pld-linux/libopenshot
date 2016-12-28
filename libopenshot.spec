@@ -1,7 +1,7 @@
 Summary:	Library for creating and editing videos
 Name:		libopenshot
 Version:	0.1.2
-Release:	2
+Release:	3
 License:	LGPL-3.0+
 Group:		Libraries
 URL:		http://www.openshot.org/
