@@ -1,12 +1,13 @@
 Summary:	Library for creating and editing videos
 Name:		libopenshot
 Version:	0.1.2
-Release:	3
+Release:	4
 License:	LGPL-3.0+
 Group:		Libraries
 URL:		http://www.openshot.org/
 Source0:	https://launchpad.net/libopenshot/0.1/0.1.2/+download/%{name}-%{version}.tar.gz
 # Source0-md5:	1491f454af8ef23b6c2f7f3e4ce39291
+Patch0:		imagemagick7.patch
 Group:		Development/Libraries
 BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	Qt5Core-devel
@@ -50,6 +51,7 @@ that use %{name}.
 
 %prep
 %setup -q -c
+%patch0 -p1
 
 %build
 install -d build
