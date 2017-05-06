@@ -1,14 +1,14 @@
 Summary:	Library for creating and editing videos
 Name:		libopenshot
-Version:	0.1.2
-Release:	4
+Version:	0.1.4
+Release:	1
 License:	LGPL-3.0+
 Group:		Libraries
-URL:		http://www.openshot.org/
-Source0:	https://launchpad.net/libopenshot/0.1/0.1.2/+download/%{name}-%{version}.tar.gz
-# Source0-md5:	1491f454af8ef23b6c2f7f3e4ce39291
+Source0:	https://launchpad.net/libopenshot/0.1/%{version}/+download/%{name}-%{version}.tar.gz
+# Source0-md5:	12cea8533f57762043ab3be2134c8f6c
 Patch0:		imagemagick7.patch
 Group:		Development/Libraries
+URL:		http://www.openshot.org/
 BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	Qt5Core-devel
 BuildRequires:	Qt5Multimedia-devel
@@ -24,6 +24,7 @@ BuildRequires:	python3-devel
 BuildRequires:	swig
 BuildRequires:	unittest-cpp-devel
 BuildRequires:	zeromq-devel
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 OpenShot Library (libopenshot) is an open-source project dedicated to
@@ -31,33 +32,32 @@ delivering high quality video editing, animation, and playback
 solutions to the world. For more information visit
 <http://www.openshot.org/>.
 
-%package        devel
+%package devel
 Summary:	Development files for %{name}
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
-%description    devel
+%description devel
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
-%package        -n python3-%{name}
+%package -n python3-%{name}
 Summary:	Python bindings for %{name}
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
-%description    -n python3-%{name}
+%description -n python3-%{name}
 The python-%{name} package contains python bindings for applications
 that use %{name}.
 
 %prep
-%setup -q -c
+%setup -qc
 %patch0 -p1
-
-%build
-install -d build
 
 sed -i -e 's#${_REL_PYTHON_MODULE_PATH}#%{py3_sitedir}#g' src/bindings/python/CMakeLists.txt
 
+%build
+install -d build
 cd build
 %cmake ..
 %{__make}
@@ -71,8 +71,8 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
