@@ -26,6 +26,8 @@ BuildRequires:	unittest-cpp-devel
 BuildRequires:	zeromq-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%define		skip_post_check_so	libopenshot.so.*
+
 %description
 OpenShot Library (libopenshot) is an open-source project dedicated to
 delivering high quality video editing, animation, and playback
@@ -77,7 +79,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libopenshot.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libopenshot.so.9
+%attr(755,root,root) %ghost %{_libdir}/libopenshot.so.1
 
 %files devel
 %defattr(644,root,root,755)
