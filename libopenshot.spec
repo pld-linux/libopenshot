@@ -1,11 +1,11 @@
 Summary:	Library for creating and editing videos
 Name:		libopenshot
-Version:	0.1.4
+Version:	0.1.5
 Release:	1
 License:	LGPL-3.0+
 Group:		Libraries
 Source0:	https://launchpad.net/libopenshot/0.1/%{version}/+download/%{name}-%{version}.tar.gz
-# Source0-md5:	12cea8533f57762043ab3be2134c8f6c
+# Source0-md5:	842551733c3bd82a7ffd9eaeea1c2b1d
 Patch0:		imagemagick7.patch
 Group:		Development/Libraries
 URL:		http://www.openshot.org/
@@ -79,7 +79,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libopenshot.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libopenshot.so.1
+%attr(755,root,root) %ghost %{_libdir}/libopenshot.so.11
 
 %files devel
 %defattr(644,root,root,755)
