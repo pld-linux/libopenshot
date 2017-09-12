@@ -1,11 +1,11 @@
 Summary:	Library for creating and editing videos
 Name:		libopenshot
-Version:	0.1.5
-Release:	2
+Version:	0.1.8
+Release:	1
 License:	LGPL-3.0+
 Group:		Libraries
-Source0:	https://launchpad.net/libopenshot/0.1/%{version}/+download/%{name}-%{version}.tar.gz
-# Source0-md5:	842551733c3bd82a7ffd9eaeea1c2b1d
+Source0:	https://github.com/OpenShot/libopenshot/archive/v%{version}.tar.gz
+# Source0-md5:	70930d0c973dac2ab5468175224f142b
 Patch0:		imagemagick7.patch
 Group:		Development/Libraries
 URL:		http://www.openshot.org/
@@ -53,7 +53,7 @@ The python-%{name} package contains python bindings for applications
 that use %{name}.
 
 %prep
-%setup -qc
+%setup -q
 %patch0 -p1
 
 sed -i -e 's#${_REL_PYTHON_MODULE_PATH}#%{py3_sitedir}#g' src/bindings/python/CMakeLists.txt
@@ -61,7 +61,8 @@ sed -i -e 's#${_REL_PYTHON_MODULE_PATH}#%{py3_sitedir}#g' src/bindings/python/CM
 %build
 install -d build
 cd build
-%cmake ..
+%cmake .. \
+	-DENABLE_RUBY=NO
 %{__make}
 
 %install
@@ -79,7 +80,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libopenshot.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libopenshot.so.11
+%attr(755,root,root) %ghost %{_libdir}/libopenshot.so.13
 
 %files devel
 %defattr(644,root,root,755)

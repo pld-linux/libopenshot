@@ -1,10 +1,10 @@
 diff -ur libopenshot-0.1.2.orig/include/TextReader.h libopenshot-0.1.2/include/TextReader.h
 --- libopenshot-0.1.2.orig/include/TextReader.h	2016-08-30 13:23:13.000000000 +0900
 +++ libopenshot-0.1.2/include/TextReader.h	2017-01-01 02:41:47.536511096 +0900
-@@ -91,7 +91,7 @@
+@@ -91,7 +91,7 @@ namespace openshot
  		string text_color;
  		string background_color;
- 		tr1::shared_ptr<Magick::Image> image;
+ 		std::shared_ptr<Magick::Image> image;
 -		list<Magick::Drawable> lines;
 +		vector<Magick::Drawable> lines;
  		bool is_open;
