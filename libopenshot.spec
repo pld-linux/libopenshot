@@ -1,12 +1,13 @@
 Summary:	Library for creating and editing videos
 Name:		libopenshot
-Version:	0.1.8
-Release:	3
+Version:	0.1.9
+Release:	1
 License:	LGPL-3.0+
 Group:		Libraries
 Source0:	https://github.com/OpenShot/libopenshot/archive/v%{version}.tar.gz
-# Source0-md5:	70930d0c973dac2ab5468175224f142b
+# Source0-md5:	74012e7260c91c3413b45401c46bfcc0
 Patch0:		imagemagick7.patch
+Patch1:		%{name}-ffmpeg.patch
 Group:		Development/Libraries
 URL:		http://www.openshot.org/
 BuildRequires:	ImageMagick-c++-devel
@@ -55,6 +56,7 @@ that use %{name}.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 sed -i -e 's#${_REL_PYTHON_MODULE_PATH}#%{py3_sitedir}#g' src/bindings/python/CMakeLists.txt
 
@@ -80,7 +82,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libopenshot.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libopenshot.so.13
+%attr(755,root,root) %ghost %{_libdir}/libopenshot.so.14
 
 %files devel
 %defattr(644,root,root,755)
