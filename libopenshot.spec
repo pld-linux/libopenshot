@@ -1,14 +1,11 @@
 Summary:	Library for creating and editing videos
 Name:		libopenshot
-Version:	0.2.0
-Release:	3
+Version:	0.3.3
+Release:	1
 License:	LGPL-3.0+
 Group:		Libraries
-Source0:	https://github.com/OpenShot/libopenshot/archive/v%{version}.tar.gz
-# Source0-md5:	09b05e23356d53777bcb2cad1615683b
-Patch0:		imagemagick7.patch
-Patch1:		%{name}-ffmpeg.patch
-Group:		Development/Libraries
+Source0:	https://github.com/OpenShot/libopenshot/archive/v%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	3fc1f185050bf01b73948944b8e13bc7
 URL:		http://www.openshot.org/
 BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	Qt5Core-devel
@@ -19,7 +16,7 @@ BuildRequires:	cppzmq-devel
 BuildRequires:	doxygen
 BuildRequires:	ffmpeg-devel
 BuildRequires:	ffmpeg-libs
-BuildRequires:	libopenshot-audio-devel
+BuildRequires:	libopenshot-audio-devel >= 0.3
 BuildRequires:	libstdc++-devel
 BuildRequires:	python3-devel
 BuildRequires:	swig
@@ -55,10 +52,6 @@ that use %{name}.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-
-sed -i -e 's#${_REL_PYTHON_MODULE_PATH}#%{py3_sitedir}#g' src/bindings/python/CMakeLists.txt
 
 %build
 install -d build
@@ -82,7 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libopenshot.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libopenshot.so.15
+%attr(755,root,root) %ghost %{_libdir}/libopenshot.so.26
 
 %files devel
 %defattr(644,root,root,755)
