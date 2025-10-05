@@ -1,4 +1,5 @@
 Summary:	Library for creating and editing videos
+Summary(pl.UTF-8):	Biblioteka do tworzenia i edycji filmów
 Name:		libopenshot
 Version:	0.3.3
 Release:	5
@@ -6,7 +7,7 @@ License:	LGPL-3.0+
 Group:		Libraries
 Source0:	https://github.com/OpenShot/libopenshot/archive/v%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	3fc1f185050bf01b73948944b8e13bc7
-URL:		http://www.openshot.org/
+URL:		https://www.openshot.org/
 BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	Qt5Core-devel
 BuildRequires:	Qt5Multimedia-devel
@@ -30,25 +31,39 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 OpenShot Library (libopenshot) is an open-source project dedicated to
 delivering high quality video editing, animation, and playback
 solutions to the world. For more information visit
-<http://www.openshot.org/>.
+<https://www.openshot.org/>.
+
+%description -l pl.UTF-8
+Biblioteka OpenShot (libopenshot) to projekt o otwartych źródłach,
+mający na celu dostarczenie możliwość edycji wysokiej jakości filmów,
+animacji i dźwięku. Więcej informacji na stronie
+<https://www.openshot.org/>.
 
 %package devel
-Summary:	Development files for %{name}
+Summary:	Development files for OpenShot library
+Summary(pl.UTF-8):	Pliki programistyczne biblioteki OpenShot
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
-The %{name}-devel package contains libraries and header files for
-developing applications that use %{name}.
+This package contains header files for developing applications that
+use OpenShot library.
+
+%description devel -l pl.UTF-8
+Ten pakiet zawiera pliki nagłówkowe do tworzenia aplikacji
+wykorzystujących bibliotekę OpenShot.
 
 %package -n python3-%{name}
-Summary:	Python bindings for %{name}
+Summary:	Python bindings for OpenShot library
+Summary(pl.UTF-8):	Wiązania Pythona do biblioteki OpenShot
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description -n python3-%{name}
-The python-%{name} package contains python bindings for applications
-that use %{name}.
+This package contains Python bindings for OpenShot library.
+
+%description -n python3-%{name} -l pl.UTF-8
+Ten pakiet zawiera wiązania Pythona do biblioteki OpenShot.
 
 %prep
 %setup -q
@@ -75,12 +90,12 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libopenshot.so.*.*
-%attr(755,root,root) %ghost %{_libdir}/libopenshot.so.26
+%ghost %{_libdir}/libopenshot.so.26
 
 %files devel
 %defattr(644,root,root,755)
 %{_includedir}/libopenshot
-%attr(755,root,root) %{_libdir}/libopenshot.so
+%{_libdir}/libopenshot.so
 
 %files -n python3-%{name}
 %defattr(644,root,root,755)
