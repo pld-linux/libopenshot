@@ -2,7 +2,7 @@ Summary:	Library for creating and editing videos
 Summary(pl.UTF-8):	Biblioteka do tworzenia i edycji filmów
 Name:		libopenshot
 Version:	0.3.3
-Release:	5
+Release:	6
 License:	LGPL-3.0+
 Group:		Libraries
 Source0:	https://github.com/OpenShot/libopenshot/archive/v%{version}/%{name}-%{version}.tar.gz
